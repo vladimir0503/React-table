@@ -4,23 +4,25 @@ import Form from './Form';
 import Table from './Table';
 import Pagination from './Pagination';
 
+const url = 'http://localhost:3001/data';
+
 const TableContainer = React.memo(function TableContainer() {
     const [sortAscending, setSortAscending] = React.useState(true);
     const [allData, setAllData] = React.useState([]);
     const [tabData, setTabData] = React.useState([]);
 
     const loadData = async () => {
-        const response = await fetch('/data');
+        const response = await fetch(url);
         const all = await response.json();
         setAllData([...all]);
 
-        const res = await fetch('/data?_limit=50');
+        const res = await fetch(`${url}?_limit=50`);
         const data = await res.json();
         setTabData([...data]);
     };
 
     const addData = async value => {
-        await fetch('/data', {
+        await fetch(url, {
             method: 'POST',
             body: JSON.stringify(value),
             headers: {
@@ -30,7 +32,7 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const findData = async (value) => {
-        const res = await fetch(`/data?_limit=50&q=${value}`);
+        const res = await fetch(`${url}?_limit=50&q=${value}`);
         const data = await res.json();
         setTabData([...data]);
     };
@@ -53,13 +55,13 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const deleteData = async id => {
-        await fetch(`/data/${id}`, {
+        await fetch(`${url}/${id}`, {
             method: 'DELETE'
         });
     };
 
     const nextPage = async (num) => {
-        const res = await fetch(`/data?_limit=50&_page=${num}`);
+        const res = await fetch(`${url}?_limit=50&_page=${num}`);
         const data = await res.json();
         setTabData([...data]);
     };
