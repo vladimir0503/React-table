@@ -68,6 +68,8 @@ const TableContainer = React.memo(function TableContainer() {
         setTabData([...data]);
     };
 
+    console.log(allData);
+
     React.useEffect(() => {
         loadData();
     }, []);
