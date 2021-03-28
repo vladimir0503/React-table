@@ -16,7 +16,7 @@ const TableContainer = React.memo(function TableContainer() {
         const all = await response.json();
         setAllData([...all]);
 
-        const res = await fetch(`${url}?_limit=50`);
+        const res = await fetch('/data?_limit=50');
         const data = await res.json();
         setTabData([...data]);
     };
@@ -32,7 +32,7 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const findData = async (value) => {
-        const res = await fetch(`${url}?_limit=50&q=${value}`);
+        const res = await fetch(`/data?_limit=50&q=${value}`);
         const data = await res.json();
         setTabData([...data]);
     };
@@ -61,7 +61,7 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const nextPage = async (num) => {
-        const res = await fetch(`${url}?_limit=50&_page=${num}`);
+        const res = await fetch(`/data?_limit=50&_page=${num}`);
         const data = await res.json();
         setTabData([...data]);
     };
