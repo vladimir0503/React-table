@@ -59,6 +59,7 @@ const TableContainer = React.memo(function TableContainer() {
         await fetch(`${url}/${id}`, {
             method: 'DELETE'
         });
+        loadData();
     };
 
     const nextPage = async (num) => {
