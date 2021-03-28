@@ -29,6 +29,7 @@ const TableContainer = React.memo(function TableContainer() {
                 'Content-Type': 'application/json'
             }
         });
+        loadData();
     };
 
     const findData = async (value) => {
