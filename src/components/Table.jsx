@@ -35,7 +35,7 @@ const Table = React.memo(function Table({ sort, data, del }) {
                         <tr onMouseOver={() => setRowId(id)}
                             onMouseOut={() => setRowId(null)}
                             key={`${item.id}_${id}`}>
-                            <td>{item.id}</td>
+                            <td>{item.num}</td>
                             <td>{item.fullName ? item.fullName : '-----/-----'}</td>
                             <td>{item.mail ? item.mail : '-----/-----'}</td>
                             <td>{item.adress ? item.adress : '-----/-----'}</td>

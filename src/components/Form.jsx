@@ -7,11 +7,14 @@ const Form = React.memo(function Form({ length, newData, find }) {
     const addData = e => {
         e.preventDefault();
         const user = {
-            id: length + 1,
+            id: Math.floor(Math.random() * 100000),
+            num: length + 1,
             fullName: e.target.fullName.value,
             mail: e.target.mail.value,
             adress: e.target.adress.value
         };
+
+        [...e.target].forEach(i => i.value = '');
 
         newData(user);
     };
