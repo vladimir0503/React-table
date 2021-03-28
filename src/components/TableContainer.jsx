@@ -4,7 +4,7 @@ import Form from './Form';
 import Table from './Table';
 import Pagination from './Pagination';
 
-const url = 'http://localhost:3001/data';
+const url = 'https://awesome-table.herokuapp.com/data';
 
 const TableContainer = React.memo(function TableContainer() {
     const [sortAscending, setSortAscending] = React.useState(true);
