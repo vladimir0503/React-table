@@ -20,7 +20,7 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const addData = async value => {
-        await fetch(url, {
+        await fetch('/data', {
             method: 'POST',
             body: JSON.stringify(value),
             headers: {
@@ -53,7 +53,7 @@ const TableContainer = React.memo(function TableContainer() {
     };
 
     const deleteData = async id => {
-        await fetch(`${url}/${id}`, {
+        await fetch(`/data/${id}`, {
             method: 'DELETE'
         });
     };
