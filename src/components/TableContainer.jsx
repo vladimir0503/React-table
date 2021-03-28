@@ -68,7 +68,7 @@ const TableContainer = React.memo(function TableContainer() {
 
     React.useEffect(() => {
         loadData();
-    }, [allData]);
+    }, []);
 
     return (
         <div className='tab-wrapper'>
