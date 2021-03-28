@@ -1,0 +1,51 @@
+.tab-wrapper {
+    width: 1158px;
+    margin: 27px auto;
+
+    table {
+        margin: 10px 0 10px 0;
+
+        th {
+            font-size: 20px;
+            width: 400px;
+            height: 50px;
+            background-color: green;
+            color: white;
+            outline: 1px solid white;
+            outline-offset: 0px;
+            cursor: pointer;
+            &:nth-child(1) {
+                width: 100px;
+            }
+
+            &:nth-child(2) {
+                width: 300px;
+            }
+        }
+
+        tbody {
+            td {
+                font-size: 18px;
+                outline: 1px solid #00800021;
+                outline-offset: 0px;
+                width: 400px;
+                height: 50px;
+                text-align: center;
+
+                &:nth-child(1) {
+                    width: 100px;
+                }
+
+                &:nth-child(2) {
+                    width: 300px;
+                }
+
+                &:nth-child(5) {
+                    position: absolute;
+                    outline: none;
+                    width: 87px;
+                }
+            }
+        }
+    }
+}

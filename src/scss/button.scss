@@ -1,0 +1,24 @@
+%active-btn {
+    background-color: green;
+    color: white;
+}
+
+button {
+    border: 1px solid #f5f4f2;
+    padding: 0.78125rem 1.5rem;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00800021;
+    transition: 0.2s;
+    width: 143px;
+    height: 43px;
+    border-radius: 4px;
+
+    &:hover {
+        @extend %active-btn;
+    }
+
+    &.active {
+        @extend %active-btn;
+    }
+}

@@ -1,0 +1,73 @@
+@keyframes form-on {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+%animation {
+    animation: form-on 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.form-wrapper {
+    margin-bottom: 20px;
+
+    .form-block {
+        display: flex;
+        margin-bottom: 20px;
+
+        svg {
+            margin: 9px 36px 0 0;
+        }
+
+        form {
+            margin: 0 0px 17px 58px;
+            position: absolute;
+
+            input {
+                margin-right: 13px;
+                width: 280px;
+                border: 1px solid #00800021;
+                box-sizing: border-box;
+                padding: 0.75rem 1rem;
+                border-radius: 4px;
+                font-size: 15px;
+            }
+
+            &.show {
+                @extend %animation;
+            }
+
+            &.hide {
+                display: none;
+            }
+        }
+
+        textarea {
+            position: absolute;
+            margin: 0 0px 17px 58px;
+            margin-right: 13px;
+            width: 500px;
+            height: 44px;
+            border: 1px solid #00800021;
+            box-sizing: border-box;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            font-size: 15px;
+
+            &.show {
+                @extend %animation;
+            }
+
+            &.hide {
+                display: none;
+            }
+        }
+    }
+}
