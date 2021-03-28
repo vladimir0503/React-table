@@ -10,7 +10,7 @@ const TableContainer = React.memo(function TableContainer() {
     const [tabData, setTabData] = React.useState([]);
 
     const loadData = async () => {
-        const response = await fetch(url);
+        const response = await fetch('/data');
         const all = await response.json();
         setAllData([...all]);
 
