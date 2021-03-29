@@ -43,13 +43,15 @@ const TableContainer = React.memo(function TableContainer() {
 
         const sortData = tabData.sort((a, b) => {
             switch (mode) {
-                case 'asc':
+                case 'desc':
                     return (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
 
-                case 'desc':
+                case 'asc':
                     return (a[key] > b[key]) ? -1 : (a[key] < b[key]) ? 1 : 0;
             }
         });
+
+        console.log(key);
 
         setSortAscending(!sortAscending);
         setTabData([...sortData]);
@@ -67,8 +69,6 @@ const TableContainer = React.memo(function TableContainer() {
         const data = await res.json();
         setTabData([...data]);
     };
-
-    console.log(allData);
 
     React.useEffect(() => {
         loadData();

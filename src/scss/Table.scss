@@ -47,5 +47,22 @@
                 }
             }
         }
+
+        div {
+            svg {
+                fill: white;
+                margin: 0;
+                position: relative;
+                left: 135px;
+
+                &.first {
+                    left: 17px;
+                }
+
+                &.two {
+                    left: 97px;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Form = React.memo(function Form({ length, newData, find }) {
     const [formOn, setFormOn] = React.useState(false);
@@ -6,6 +6,7 @@ const Form = React.memo(function Form({ length, newData, find }) {
 
     const addData = e => {
         e.preventDefault();
+
         const user = {
             id: Math.floor(Math.random() * 100000),
             num: length + 1,
