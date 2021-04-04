@@ -1,10 +1,13 @@
+import TableState from './context/TabeState';
 import TableContainer from './components/TableContainer';
 
 function App() {
   return (
-    <div>
-      <TableContainer />
-    </div>
+    <TableState>
+      <div>
+        <TableContainer />
+      </div>
+    </TableState>
   );
 }
 

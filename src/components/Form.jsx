@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 const Form = React.memo(function Form({ length, newData, find }) {
     const [formOn, setFormOn] = React.useState(false);

@@ -2,46 +2,18 @@ import React from 'react';
 
 import Form from './Form';
 import Table from './Table';
-import Pagination from './Pagination';
-
-const url = 'https://awesome-table.herokuapp.com/data';
+import Pagination from './Pagination'
+import { TableContext } from '../context/tableContext';
 
 const TableContainer = React.memo(function TableContainer() {
     const [sortAscending, setSortAscending] = React.useState(true);
-    const [allData, setAllData] = React.useState([]);
-    const [tabData, setTabData] = React.useState([]);
 
-    const loadData = async () => {
-        const response = await fetch(url);
-        const all = await response.json();
-        setAllData([...all]);
-
-        const res = await fetch(`${url}?_limit=50`);
-        const data = await res.json();
-        setTabData([...data]);
-    };
-
-    const addData = async value => {
-        await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(value),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        loadData();
-    };
-
-    const findData = async (value) => {
-        const res = await fetch(`${url}?_limit=50&q=${value}`);
-        const data = await res.json();
-        setTabData([...data]);
-    };
+    const state = React.useContext(TableContext);
 
     const sortToAscDesc = (key) => {
         const mode = sortAscending ? 'asc' : 'desc';
 
-        const sortData = tabData.sort((a, b) => {
+        const sortData = state.data.sort((a, b) => {
             switch (mode) {
                 case 'desc':
                     return (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
@@ -51,41 +23,30 @@ const TableContainer = React.memo(function TableContainer() {
             }
         });
 
-        console.log(key);
-
         setSortAscending(!sortAscending);
-        setTabData([...sortData]);
-    };
-
-    const deleteData = async id => {
-        await fetch(`${url}/${id}`, {
-            method: 'DELETE'
-        });
-        loadData();
-    };
-
-    const nextPage = async (num) => {
-        const res = await fetch(`${url}?_limit=50&_page=${num}`);
-        const data = await res.json();
-        setTabData([...data]);
+        state.sortData(sortData);
     };
 
     React.useEffect(() => {
-        loadData();
+        state.loadData();
     }, []);
 
     return (
         <div className='tab-wrapper'>
             <Form
-                newData={addData}
-                length={allData.length}
-                find={findData}
+                newData={state.addData}
+                length={state.dataSize}
+                find={state.findData}
             />
-            {allData.length > 50 ? <Pagination arr={allData} page={nextPage} /> : null}
+            {
+                state.dataSize > 50
+                    ? <Pagination size={state.numberPage} page={state.selectPage} />
+                    : null
+            }
             <Table
                 sort={sortToAscDesc}
-                data={tabData}
-                del={deleteData}
+                data={state.data}
+                del={state.deleteData}
             />
         </div>
     );

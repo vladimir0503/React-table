@@ -1,23 +1,8 @@
 import React from 'react';
 
-const Pagination = ({ arr, page }) => {
+const Pagination = ({ size, page }) => {
     const [btns, setBtns] = React.useState([]);
     const [numBtn, setNumBtn] = React.useState(1);
-
-    const createPagination = (arr) => {
-        const result = [];
-        const arrBtn = [];
-
-        for (let i = 0; i < Math.ceil(arr.length / 50); i++) {
-            result[i] = arr.slice((i * 50), (i * 50) + 50);
-        };
-
-        for (let i = 1; i <= result.length; i++) {
-            arrBtn.push(i);
-        };
-
-        return arrBtn;
-    };
 
     const handleClick = (num) => {
         page(num);
@@ -25,14 +10,15 @@ const Pagination = ({ arr, page }) => {
     };
 
     React.useEffect(() => {
-        setBtns(createPagination(arr));
-    }, [arr]);
+        setBtns(new Array(size).fill('').map((_, index) => index + 1));
+    }, [size]);
 
     return (
         <div>
-            {btns.map(btn =>
-                <button className={`pagination-btn ${btn === numBtn ? 'active' : null}`}
-                    key={btn}
+            {btns.map((btn, index) =>
+                <button
+                    key={index}
+                    className={`pagination-btn ${btn === numBtn ? 'active' : null}`}
                     onClick={() => handleClick(btn)}>
                     {btn}
                 </button>)}
